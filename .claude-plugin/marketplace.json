@@ -1,0 +1,16 @@
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "adhd-ally",
+  "description": "ADHD-friendly explanations for Claude.",
+  "owner": {
+    "name": "Khailas Rangath"
+  },
+  "plugins": [
+    {
+      "name": "adhd-ally",
+      "description": "Answer first, short chunks, and a confusion ladder that never repeats the same explanation.",
+      "source": "./",
+      "category": "productivity"
+    }
+  ]
+}

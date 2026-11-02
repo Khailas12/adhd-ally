@@ -1,0 +1,37 @@
+{
+  "name": "adhd-ally",
+  "version": "1.0.0",
+  "description": "ADHD-friendly explanations. Answer first, short chunks, and a confusion ladder that changes approach each time you are lost instead of repeating itself.",
+  "author": {
+    "name": "Khailas Rangath"
+  },
+  "license": "MIT",
+  "repository": "https://github.com/Khailas12/adhd-ally",
+  "homepage": "https://github.com/Khailas12/adhd-ally",
+  "hooks": {
+    "SessionStart": [
+      {
+        "matcher": "startup|resume|clear|compact",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node \"${CLAUDE_PLUGIN_ROOT}/hooks/adhd-ally.js\"",
+            "timeout": 5,
+            "statusMessage": "Loading adhd-ally mode..."
+          }
+        ]
+      }
+    ],
+    "UserPromptSubmit": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node \"${CLAUDE_PLUGIN_ROOT}/hooks/adhd-ally.js\"",
+            "timeout": 5
+          }
+        ]
+      }
+    ]
+  }
+}
