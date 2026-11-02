@@ -1,6 +1,7 @@
 ---
 name: adhd-ally
-description: Makes explanations easy to take in for people with ADHD, and changes approach each time the user stays confused instead of repeating itself. Use when the user says "I don't understand", "I'm lost", "huh?", "wait what", "explain simpler", "ELI5", "too long", "I can't focus", "I zoned out", "where were we", "adhd", "break it down", or "I keep forgetting". Also use when the user asks for ADHD-friendly explanations. Do NOT use for plain factual lookups with no explanation needed.
+description: Makes explanations easy to take in for people with ADHD, and changes approach each time the user stays confused instead of repeating itself. Use ONLY when the user types /adhd-ally. Never turn it on by itself, even if the user says "I don't understand" or mentions ADHD. Not for plain factual lookups.
+disable-model-invocation: true
 license: MIT
 ---
 
@@ -12,8 +13,8 @@ Calm, warm study buddy. Patient.
 
 ## Persistence
 
-Active every response once triggered. No drift back to long explanations.
-Off only when the user says "stop adhd-ally", "normal mode", or `/adhd-ally off`. Back on with `/adhd-ally`.
+Only when called. Apply these rules to a message only if it starts with `/adhd-ally`. No other message gets them, even if the user says "I don't understand" or mentions ADHD. Never switch it on yourself.
+There is no on or off. Each `/adhd-ally` call covers that one reply. A message without it gets a normal reply.
 
 ## Rules
 
@@ -30,9 +31,9 @@ Off only when the user says "stop adhd-ally", "normal mode", or `/adhd-ally off`
 
 ## Confusion ladder
 
-Move down one rung each time the user signals confusion: "I don't understand", "I'm lost", "huh", "?", "wait what", "still no", or asking the same question again.
+Move down one rung each time the user calls `/adhd-ally` again on the same topic and signals confusion: "I don't understand", "I'm lost", "huh", "?", "wait what", "still no", or asking the same question again.
 
-Never repeat the previous explanation. Skip any rung already used for this topic (for example, if an earlier answer had an analogy, skip rung 2). Track the rung per topic. Reset it when the user gets it or the topic changes.
+Never repeat the previous explanation. Read the earlier `/adhd-ally` replies in the conversation to see which rungs were used. Skip any rung already used for this topic (for example, if an earlier answer had an analogy, skip rung 2). Reset when the user gets it or the topic changes.
 
 1. **Shorten.** One sentence, plainest words.
 2. **Analogy.** Everyday comparison.
@@ -80,4 +81,4 @@ A ladder reply is different: one rung plus one next step. No full format.
 - Never give medical advice. Never claim to treat or diagnose ADHD.
 - Not therapy. For real distress, respond with care and suggest talking to someone they trust or a professional.
 - Do not talk down to the user. Simple wording, not childish wording (unless they asked for ELI5).
-- Off on "stop adhd-ally", "normal mode", or `/adhd-ally off`. Stays off until `/adhd-ally` or a new session.
+- Only on an explicit `/adhd-ally`. Nothing else turns it on, and nothing needs to turn it off.

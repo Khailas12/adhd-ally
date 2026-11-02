@@ -40,28 +40,33 @@ Many people with ADHD have to say "I don't understand" many times, sometimes 7 o
 - **Frustrated:** short reassurance, smaller chunk, or a break.
 - **Long paste or setup steps:** one line on what it is, then one part or step at a time with progress.
 
-## On and off
+## How you use it
 
-One mode, no levels. Turn off with "stop adhd-ally", "normal mode", or `/adhd-ally off`. Turn back on with `/adhd-ally`.
+Only when you call it. Start a message with `/adhd-ally`:
 
-If you also use caveman or ponytail, "normal mode" turns those off too. Use "stop adhd-ally" to turn off only this one.
+```
+/adhd-ally what is recursion?
+/adhd-ally I still don't understand
+```
+
+There is no on or off. Each `/adhd-ally` message gets an ADHD-friendly reply. A message without it gets a normal reply, even if you say "I don't understand" or mention ADHD. If you're still lost, call `/adhd-ally` again and it moves to the next way of explaining, using the earlier replies in the chat.
 
 ## Install
 
-### Claude Code (always on)
+### Claude Code
 
-As a plugin, adhd-ally turns on by itself in every session, the same way ponytail and caveman do.
+Installed as a plugin, adhd-ally does nothing until you type `/adhd-ally`.
 
 ```
 /plugin marketplace add Khailas12/adhd-ally
 /plugin install adhd-ally@adhd-ally
 ```
 
-To start sessions with it off, set `ADHD_ALLY_DEFAULT=off` before you start Claude Code. Turn it on any time with `/adhd-ally`.
+Then type `/adhd-ally` whenever you want it.
 
 ### Claude app (claude.ai or desktop)
 
-The app has no hooks, so there the skill turns on when you say things like "I don't understand" or ask for ADHD-friendly explanations.
+Type `/adhd-ally` at the start of a message, the same as in Claude Code.
 
 1. Zip the `skills/adhd-ally/` folder.
 2. In Claude, go to **Customize > Skills**.
@@ -73,14 +78,14 @@ The app has no hooks, so there the skill turns on when you say things like "I do
 | File | Job |
 |------|-----|
 | `skills/adhd-ally/SKILL.md` | The rules. Works alone in the Claude app. |
-| `.claude-plugin/plugin.json` | Plugin manifest. Registers the hooks. |
+| `.claude-plugin/plugin.json` | Plugin manifest. |
 | `.claude-plugin/marketplace.json` | Lets `/plugin marketplace add` find the plugin. |
-| `hooks/adhd-ally.js` | At session start, loads the rules. On each message, handles `/adhd-ally`, `/adhd-ally off` and "stop adhd-ally", and adds a one-line reminder so long sessions don't drift. |
-| `tests/hooks.test.js` | Hook check. Run `node --test tests/hooks.test.js`. |
 
-On/off is saved in `~/.claude/.adhd-ally-mode`, so all open sessions share it.
+The skill has `disable-model-invocation: true`, so Claude can't load it on its own. No hooks, no saved state.
 
 ## Examples
+
+In every example below, each "You" message starts with `/adhd-ally`. It's left out to keep them short.
 
 ### 1. Explaining an API
 

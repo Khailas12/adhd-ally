@@ -7,31 +7,5 @@
   },
   "license": "MIT",
   "repository": "https://github.com/Khailas12/adhd-ally",
-  "homepage": "https://github.com/Khailas12/adhd-ally",
-  "hooks": {
-    "SessionStart": [
-      {
-        "matcher": "startup|resume|clear|compact",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "node \"${CLAUDE_PLUGIN_ROOT}/hooks/adhd-ally.js\"",
-            "timeout": 5,
-            "statusMessage": "Loading adhd-ally mode..."
-          }
-        ]
-      }
-    ],
-    "UserPromptSubmit": [
-      {
-        "hooks": [
-          {
-            "type": "command",
-            "command": "node \"${CLAUDE_PLUGIN_ROOT}/hooks/adhd-ally.js\"",
-            "timeout": 5
-          }
-        ]
-      }
-    ]
-  }
+  "homepage": "https://github.com/Khailas12/adhd-ally"
 }
